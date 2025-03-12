@@ -13,7 +13,7 @@ import com.sun.net.httpserver.*;
 
 
 public class Main {
-    public static int port = 80;
+    public static int port = 8080;
     private static final ExecutorService executor = Executors.newSingleThreadExecutor();
 
     public static HttpServer createHttpServer(int initialPort) throws IOException {
@@ -69,15 +69,15 @@ public class Main {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        int port = 80;
+        int port = 8080;
         if (args.length > 0) {
             port = Integer.parseInt(args[0]);
         }
 
         HttpServer server = createHttpServer(port);
-        server.createContext("/v1/chat/completions", new CompletionHandler());
-        server.createContext("/v1/images/generations", new TextToImageHandler());
-        server.createContext("/v1/models", new ModelsHandler());
+        server.createContext("/hf/v1/chat/completions", new CompletionHandler());
+        server.createContext("/hf/v1/images/generations", new TextToImageHandler());
+        server.createContext("/hf/v1/models", new ModelsHandler());
 
         server.setExecutor(executor);
         server.start();
