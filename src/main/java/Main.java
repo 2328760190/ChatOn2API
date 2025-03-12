@@ -13,7 +13,7 @@ import com.sun.net.httpserver.*;
 
 
 public class Main {
-    public static int port = 8080;
+    public static int port = 7860;
     private static final ExecutorService executor = Executors.newSingleThreadExecutor();
 
     public static HttpServer createHttpServer(int initialPort) throws IOException {
@@ -69,7 +69,7 @@ public class Main {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        int port = 8080;
+        int port = 7860;
         if (args.length > 0) {
             port = Integer.parseInt(args[0]);
         }
